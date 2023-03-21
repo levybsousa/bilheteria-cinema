@@ -1,15 +1,25 @@
 package bilhereteriacinema.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import bilhereteriacinema.model.dto.Filme;
+import bilhereteriacinema.util.DateUtil;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/Filmes")
+@RequestMapping("Filme")
+@Log4j2
 public class FilmeController {
-    @GetMapping(value = " /{nome}")
-    public String nome(@PathVariable("nome") String nome) {
-        return "Filme" + nome;
+    @Autowired
+    private DateUtil dateUtil;
+
+    @GetMapping(path = "list")
+    public List<Filme> list() {
+        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
+        return List.of(new Filme("007"), new Filme("Rei leão"));
     }
 }
+
