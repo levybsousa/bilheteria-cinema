@@ -23,7 +23,7 @@ public class FilmeController {
 
     @GetMapping("/{id}")
     public Filme getByID(@PathVariable Long id) {
-        return filmeService.getById();
+        return filmeService.getById(id);
     }
 
     @PostMapping
@@ -31,7 +31,7 @@ public class FilmeController {
         return filmeService.save(filme);
     }
 
-    @PutMapping("/{ìd}")
+    @PutMapping("/{id}")
     public Filme update(@PathVariable Long id, @RequestBody Filme filme) {
         return filmeService.update(id, filme);
     }

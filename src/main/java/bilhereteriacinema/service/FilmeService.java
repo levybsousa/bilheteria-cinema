@@ -11,15 +11,16 @@ public class FilmeService {
 
     public List<Filme> getAll() {
         List<Filme> filmes = new ArrayList<>();
-        Filme filme1 = new Filme("Rei Leão");
-        Filme filme2 = new Filme("Tarzan");
+        Filme filme1 = new Filme("Rei Leão", 1l);
+        Filme filme2 = new Filme("Tarzan" , 2l);
         filmes.add(filme1);
         filmes.add(filme2);
         return filmes;
     }
 
-    public Filme getById() {
-        Filme filme = new Filme("Rei Leão");
+    public Filme getById(Long id ) {
+
+        Filme filme = new Filme("Rei Leão" ,1l);
         return filme;
     }
 
