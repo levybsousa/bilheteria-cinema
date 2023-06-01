@@ -28,7 +28,8 @@ public class FilmeService {
     public Filme getById(Long id) {
 
         Filme filme = new Filme(1l, "Rei Leão");
-        return filme;
+        Filme filmeGetById = filmeRepository.getById(id);
+        return filmeGetById;
     }
 
     public Filme save(Filme filme) {
@@ -38,10 +39,12 @@ public class FilmeService {
     }
 
     public Filme update(Long id, Filme filme) {
+
         return filme;
     }
 
     public void delete(Long id) {
+
 
     }
 
