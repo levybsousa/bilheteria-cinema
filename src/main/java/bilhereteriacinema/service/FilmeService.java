@@ -17,19 +17,17 @@ public class FilmeService {
     private final FilmeRepository filmeRepository;
 
     public List<Filme> getAll() {
-        List<Filme> filmes = new ArrayList<>();
-        Filme filme1 = new Filme(1l, "Rei Leão");
-        Filme filme2 = new Filme(2l, "Tarzan");
-        filmes.add(filme1);
-        filmes.add(filme2);
-        return filmes;
+      List<Filme> filmes = filmeRepository.findAll();
+//      Retorna
+//        Recebe
+      return filmes;
     }
 
     public Filme getById(Long id) {
 
-        Filme filme = new Filme(1l, "Rei Leão");
-        Filme filmeGetById = filmeRepository.getById(id);
-        return filmeGetById;
+
+        Filme filme = filmeRepository.getById(id);
+        return filme;
     }
 
     public Filme save(Filme filme) {
@@ -44,8 +42,7 @@ public class FilmeService {
     }
 
     public void delete(Long id) {
-
-
+         filmeRepository.deleteById(id);
     }
 
 }
