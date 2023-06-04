@@ -18,13 +18,10 @@ public class FilmeService {
 
     public List<Filme> getAll() {
       List<Filme> filmes = filmeRepository.findAll();
-//      Retorna
-//        Recebe
       return filmes;
     }
 
     public Filme getById(Long id) {
-
 
         Filme filme = filmeRepository.getById(id);
         return filme;
@@ -37,8 +34,7 @@ public class FilmeService {
     }
 
     public Filme update(Long id, Filme filme) {
-
-        return filme;
+       return  filme;
     }
 
     public void delete(Long id) {
