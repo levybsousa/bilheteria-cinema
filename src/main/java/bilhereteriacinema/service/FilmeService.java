@@ -34,7 +34,13 @@ public class FilmeService {
     }
 
     public Filme update(Long id, Filme filme) {
-       return  filme;
+//        Método update:
+
+//        verificação: Verificar se o filme passado pelo usuário já existe no banco.
+//                Se sim ( comando alterar )
+//        Se não ( Adicionar filme)
+
+        return  filme;
     }
 
     public void delete(Long id) {
