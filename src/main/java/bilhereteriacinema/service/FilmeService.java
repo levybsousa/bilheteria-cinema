@@ -17,14 +17,17 @@ public class FilmeService {
     private final FilmeRepository filmeRepository;
 
     public List<Filme> getAll() {
-      List<Filme> filmes = filmeRepository.findAll();
-      return filmes;
+        List<Filme> filmes = filmeRepository.findAll();
+        return filmes;
     }
 
     public Filme getById(Long id) {
 
-        Filme filme = filmeRepository.getById(id);
-        return filme;
+        Filme filme = filmeRepository.findById(id).get();
+        if (filme != null) {
+            return filme;
+        } else
+            return null;
     }
 
     public Filme save(Filme filme) {
@@ -34,17 +37,25 @@ public class FilmeService {
     }
 
     public Filme update(Long id, Filme filme) {
-//        Método update:
-
-//        verificação: Verificar se o filme passado pelo usuário já existe no banco.
-//                Se sim ( comando alterar )
-//        Se não ( Adicionar filme)
-
-        return  filme;
+        Filme filmeFromDataBse = this.filmeRepository.findById(id).get();
+        if (filmeFromDataBse != null) {
+            filme.setId(id);
+            Filme filmeUpdated = filmeRepository.save(filme);
+            return filmeUpdated;
+        } else {
+            System.out.println("Filme não encontrado");
+            return null;
+        }
     }
 
+
     public void delete(Long id) {
-         filmeRepository.deleteById(id);
+        Filme filme = this.getById(id);
+        if (filme != null) {
+            filmeRepository.deleteById(id);
+        } else {
+            System.out.println("Filme não encontrado");
+        }
     }
 
 }
