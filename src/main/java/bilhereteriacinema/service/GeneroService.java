@@ -1,9 +1,12 @@
 package bilhereteriacinema.service;
 
 import bilhereteriacinema.model.entity.Genero;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
+@RequiredArgsConstructor
 public class GeneroService {
     public List<Genero> getAll(){
         return null;

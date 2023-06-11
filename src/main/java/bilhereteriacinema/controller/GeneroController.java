@@ -1,34 +1,42 @@
 package bilhereteriacinema.controller;
 
+import bilhereteriacinema.model.entity.Genero;
+import bilhereteriacinema.service.GeneroService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RequestMapping("/generos")
 @RestController
+@RequiredArgsConstructor
 public class GeneroController {
+
+    private final GeneroService generoService;
 
     @GetMapping
     public List<Genero> getAll() {
-        return null;
+        return generoService.getAll();
     }
 
     @GetMapping("{/id}")
     public Genero getById(@PathVariable Long id) {
-        return null;
+        return generoService.getById(id);
     }
 
     @PostMapping
     public Genero save(@RequestBody Genero genero) {
-        return null;
+        return generoService.save(genero);
     }
 
     @PutMapping("{/id}")
     public Genero update(@PathVariable Long id, @RequestBody Genero genero) {
-        return null /
+        return generoService.update(id, genero);
     }
 
     @DeleteMapping("/{id}")
-    public Genero delete(@PathVariable Long id) {
-        return null;
+    public void delete(@PathVariable Long id) {
+        generoService.delete(id);
     }
 }
