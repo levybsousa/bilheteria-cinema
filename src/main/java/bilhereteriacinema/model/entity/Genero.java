@@ -17,5 +17,5 @@ public class Genero {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genero_sequence")
     @SequenceGenerator(name = "genero_sequence", sequenceName = "gen_seq")
     private Long id;
-    private String tipoDoGenero;
+    private String tipoGenero;
 }
