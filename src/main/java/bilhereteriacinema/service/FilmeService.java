@@ -1,6 +1,7 @@
 package bilhereteriacinema.service;
 
 import bilhereteriacinema.model.entity.Filme;
+import bilhereteriacinema.model.entity.Genero;
 import bilhereteriacinema.repository.FilmeRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,45 +19,37 @@ public class FilmeService {
     private final FilmeRepository filmeRepository;
 
     public List<Filme> getAll() {
-        List<Filme> filmes = filmeRepository.findAll();
-        return filmes;
+        List<Filme> result = filmeRepository.findAll();
+        return result;
     }
 
     public Filme getById(Long id) {
+        Optional<Filme> result = filmeRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        } else {
+            throw new RuntimeException("Recurso não encotrado");
+        }
 
-        Filme filme = filmeRepository.findById(id).get();
-        if (filme != null) {
-            return filme;
-        } else
-            return null;
     }
 
     public Filme save(Filme filme) {
 
-        Filme filmeSaved = filmeRepository.save(filme);
-        return filmeSaved;
+        Filme result = filmeRepository.save(filme);
+        return result;
     }
 
     public Filme update(Long id, Filme filme) {
-        Filme filmeFromDataBse = this.filmeRepository.findById(id).get();
-        if (filmeFromDataBse != null) {
-            filme.setId(id);
-            Filme filmeUpdated = filmeRepository.save(filme);
-            return filmeUpdated;
-        } else {
-            System.out.println("Filme não encontrado");
-            return null;
-        }
+
+        getById(id);
+        filme.setId(id);
+        Filme result = filmeRepository.save(filme);
+        return result;
     }
 
-
     public void delete(Long id) {
-        Filme filme = this.getById(id);
-        if (filme != null) {
-            filmeRepository.deleteById(id);
-        } else {
-            System.out.println("Filme não encontrado");
-        }
+        getById(id);
+        filmeRepository.deleteById(id);
     }
 
 }
