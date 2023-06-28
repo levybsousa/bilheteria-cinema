@@ -1,5 +1,6 @@
 package bilhereteriacinema.service;
 
+import bilhereteriacinema.exception.RecursoNaoEncontradoException;
 import bilhereteriacinema.model.entity.Filme;
 import bilhereteriacinema.model.entity.Genero;
 import bilhereteriacinema.repository.FilmeRepository;
@@ -28,7 +29,7 @@ public class FilmeService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RuntimeException("Recurso não encotrado");
+            throw new RecursoNaoEncontradoException();
         }
 
     }
