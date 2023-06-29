@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_DB: bilheteriacinema
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:

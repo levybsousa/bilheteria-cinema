@@ -29,13 +29,13 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql:42.3.8'
 
 //    JUnit
-//    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+   testImplementation 'org.junit.jupiter:junit-jupiter-api'
 
 }
 
 group = 'com.projecto.bilheteriacinema'
 version = '0.0.1-SNAPSHOT'
-description = 'cineBilheteria'
+description = 'bilheteriacinema'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 
