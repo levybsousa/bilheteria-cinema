@@ -7,15 +7,14 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
-public class Genero {
+public class Produtora {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genero_sequence")
-    @SequenceGenerator(name = "genero_sequence", sequenceName = "gen_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produtora_sequence")
+    @SequenceGenerator(name = "produtora_sequence", sequenceName = "pro_seq")
     private Long id;
-    private String genero;
+    private String produtora;
 }
