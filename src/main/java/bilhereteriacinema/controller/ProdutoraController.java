@@ -1,6 +1,7 @@
 package bilhereteriacinema.controller;
 
 import bilhereteriacinema.model.entity.Produtora;
+import bilhereteriacinema.service.ProdutoraService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,24 +11,31 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class ProdutoraController {
+
+    private final ProdutoraService produtoraService;
+
     @GetMapping
     public List<Produtora> getAll() {
-        return null;
+        return produtoraService.getAll();
     }
-    @GetMapping
-    public Produtora getById(){
-        return null;
-    }
-    @PostMapping
-    public Produtora save(){
-        return null;
-    }
-    @PutMapping
-    public Produtora update(){
-        return null;
-    }
-    @DeleteMapping
-    public void delete(){
 
+    @GetMapping("/{id}")
+    public Produtora getById(@PathVariable Long id) {
+        return produtoraService.getById(id);
+    }
+
+    @PostMapping
+    public Produtora save(@RequestBody Produtora produtora) {
+        return produtoraService.save(produtora);
+    }
+
+    @PutMapping("/{id)")
+    public Produtora update(@PathVariable Long id, @RequestBody Produtora produtora) {
+        return produtoraService.update(id, produtora);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        produtoraService.delete(id);
     }
 }
