@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,4 +18,7 @@ public class Produtora {
     @SequenceGenerator(name = "produtora_sequence", sequenceName = "pro_seq")
     private Long id;
     private String produtora;
+
+    @OneToMany
+    List<Filme> filmes;
 }

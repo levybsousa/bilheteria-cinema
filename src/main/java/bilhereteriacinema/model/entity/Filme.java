@@ -13,11 +13,16 @@ import javax.persistence.*;
 @Entity
 public class Filme {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="filme_sequence")
-    @SequenceGenerator(name="filme_sequence", sequenceName="fil_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "filme_sequence")
+    @SequenceGenerator(name = "filme_sequence", sequenceName = "fil_seq")
     private Long id;
     private String titulo;
 
+    @ManyToOne
+    private Genero genero;
+
+    @ManyToOne
+    private Produtora produtora;
 }
 
 

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -18,4 +19,7 @@ public class Genero {
     @SequenceGenerator(name = "genero_sequence", sequenceName = "gen_seq")
     private Long id;
     private String genero;
+
+    @OneToMany
+    List<Filme> filmes;
 }
