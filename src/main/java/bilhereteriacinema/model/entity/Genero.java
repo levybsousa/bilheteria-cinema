@@ -3,7 +3,6 @@ package bilhereteriacinema.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,7 +17,7 @@ public class Genero {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genero_sequence")
     @SequenceGenerator(name = "genero_sequence", sequenceName = "gen_seq")
     private Long id;
-    private String genero;
+    private String nome;
 
     @OneToMany
     List<Filme> filmes;

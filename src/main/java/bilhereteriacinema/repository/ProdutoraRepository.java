@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProdutoraRepository extends JpaRepository<Produtora, Long> {
 
+    Produtora getProdutoraByNome(String nome);
 }
