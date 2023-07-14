@@ -34,13 +34,20 @@ public class ProdutoraService {
     }
 
     public Produtora save(Produtora produtora) {
+        Produtora produtoraFromDataBase = produtoraRepository.getProdutoraByNome(produtora.getNome());
+        if (produtoraFromDataBase != null) {
+            throw new RuntimeException("Produtora já cadastrada");
+        }
         Produtora result = produtoraRepository.save(produtora);
         return result;
     }
 
     public Produtora update(Long id, Produtora produtora) {
-        getById(id);
-        produtora.setId(id);
+        Produtora produtoraFromDataBase = produtoraRepository.getProdutoraByNome(produtora.getNome());
+        if (produtoraFromDataBase.getId() != produtora.getId()) {
+            throw new RuntimeException("Produtora já cadastrada");
+        }
+
         Produtora result = produtoraRepository.save(produtora);
         return result;
     }

@@ -29,13 +29,20 @@ public class GeneroService {
     }
 
     public Genero save(Genero genero) {
+        Genero generoFromDataBase = generoRepository.getGeneroByNome(genero.getNome());
+        if (generoFromDataBase != null) {
+            throw new RuntimeException("Genero já existe");
+        }
         Genero result = generoRepository.save(genero);
         return result;
     }
 
     public Genero update(Long id, Genero genero) {
-        getById(id);
-        genero.setId(id);
+        Genero generoFromDataBase = generoRepository.getGeneroByNome(genero.getNome());
+
+        if (generoFromDataBase.getId() != genero.getId()) {
+            throw new RuntimeException("Genero já cadastrado");
+        }
         Genero result = generoRepository.save(genero);
         return result;
     }

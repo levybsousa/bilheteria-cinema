@@ -29,7 +29,7 @@ public class ProdutoraController {
         return produtoraService.save(produtora);
     }
 
-    @PutMapping("/{id)")
+    @PutMapping("/{id}")
     public Produtora update(@PathVariable Long id, @RequestBody Produtora produtora) {
         return produtoraService.update(id, produtora);
     }
