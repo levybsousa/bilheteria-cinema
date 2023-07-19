@@ -36,9 +36,9 @@ public class FilmeService {
 
     public Filme save(Filme filme) {
 
-        Filme filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
+       Optional <Filme> filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
 
-        if (filmeFromDataBase != null) {
+        if (filmeFromDataBase.isPresent()) {
             throw new RuntimeException("Filme já existe");
         }
         Filme result = filmeRepository.save(filme);
@@ -46,9 +46,11 @@ public class FilmeService {
     }
 
     public Filme update(Long id, Filme filme) {
-        Filme filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
+        this.getById(id);
 
-        if (filmeFromDataBase.getId() != filme.getId()) {
+        Optional<Filme> filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
+
+        if (filmeFromDataBase.isPresent() && filmeFromDataBase.get().getId() != filme.getId()) {
             throw new RuntimeException("Filme já cadastrado");
         }
 

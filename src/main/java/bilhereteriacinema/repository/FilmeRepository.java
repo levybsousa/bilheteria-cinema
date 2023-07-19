@@ -4,8 +4,10 @@ import bilhereteriacinema.model.entity.Filme;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface  FilmeRepository extends JpaRepository<Filme,Long>{
+import java.util.Optional;
 
-    Filme getFilmeByTitulo(String titulo);
+@Repository
+public interface FilmeRepository extends JpaRepository<Filme, Long> {
+
+    Optional<Filme> getFilmeByTitulo(String titulo);
 }
