@@ -18,6 +18,4 @@ public class Produtora {
     private Long id;
     private String nome;
 
-    @OneToMany
-    List<Filme> filmes;
 }

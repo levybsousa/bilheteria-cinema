@@ -19,6 +19,4 @@ public class Genero {
     private Long id;
     private String nome;
 
-    @OneToMany
-    List<Filme> filmes;
 }

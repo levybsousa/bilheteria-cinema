@@ -29,13 +29,13 @@ public class ProdutoraService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RuntimeException();
+            throw new RecursoNaoEncontradoException();
         }
     }
 
     public Produtora save(Produtora produtora) {
-        Produtora produtoraFromDataBase = produtoraRepository.getProdutoraByNome(produtora.getNome());
-        if (produtoraFromDataBase != null) {
+        Optional<Produtora> produtoraFromDataBase = produtoraRepository.getProdutoraByNome(produtora.getNome());
+        if (produtoraFromDataBase.isPresent()) {
             throw new RuntimeException("Produtora já cadastrada");
         }
         Produtora result = produtoraRepository.save(produtora);
@@ -43,8 +43,10 @@ public class ProdutoraService {
     }
 
     public Produtora update(Long id, Produtora produtora) {
-        Produtora produtoraFromDataBase = produtoraRepository.getProdutoraByNome(produtora.getNome());
-        if (produtoraFromDataBase.getId() != produtora.getId()) {
+        this.getById(id);
+
+        Optional<Produtora> produtoraFromDataBase = produtoraRepository.getProdutoraByNome(produtora.getNome());
+        if (produtoraFromDataBase.isPresent() && produtoraFromDataBase.get().getId() != produtora.getId()) {
             throw new RuntimeException("Produtora já cadastrada");
         }
 
