@@ -20,19 +20,65 @@ do postgresql   como banco para desenvolvimento local
 e o Postman para realizar os testes dos endpoints.
 
 ### Exemplo de requisição  para o endpoint de save Filme.
-* Através da classe controller do método POST o usuário 
-poderá mandar um requisição através do método save( ) ,
-que faz a chamada do método da classe FilmeService. Após isso o método 
-faz a verificação se o filme passado pelo usuário consta
-no banco de dados, se sim exibe uma mensagem reportando 
-que o filme já encontra cadastrado se não ele salva o
-novo filme 
+* Resquisição:
+
+  Endpoint/filmes 
+
+  Body:
+
+  {
+
+
+  "titulo" : "mario",
+
+  "id" : 1
+
+  }
 
 ### Exemplo de resposta do endpoint de save filme
-* As respostas que pode ser obtida após rodar o programa são:
+* Resposta: 
 
-  Status: 200 ok ( filme salvado com sucesso )
+Status 200k
 
-  Status : 500 internal Server Error 
+{
+
+"id": 1,
+
+"titulo": "mario",
+
+"genero": {
+
+"id": 1,
+
+"nome": null
+
+},
+
+"produtora" : {
+
+"id": 1,
+
+"nome": null
+
+}
+
+}
+
+Status 500 Internal Server Error 
+
+{
+"timestamp": "2023-07-30T23:06:57.899+00:00",
+
+"status": 500,
+
+"error": "Internal Server Error",
+
+"path": "/filmes"
+
+}
+
+
+
+
 
 
