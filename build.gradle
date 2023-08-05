@@ -19,6 +19,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-test'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.15'
+    implementation 'com.h2database:h2:2.2.220'
+
 
 
 //  Lombok
@@ -34,7 +36,7 @@ dependencies {
 }
 
 group = 'com.projecto.bilheteriacinema'
-version = '0.0.1-SNAPSHOT'
+version = '1'
 description = 'bilheteriacinema'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
