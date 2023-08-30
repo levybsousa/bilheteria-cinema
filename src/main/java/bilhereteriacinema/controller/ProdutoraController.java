@@ -3,6 +3,7 @@ package bilhereteriacinema.controller;
 import bilhereteriacinema.model.entity.Produtora;
 import bilhereteriacinema.service.ProdutoraService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,27 +16,32 @@ public class ProdutoraController {
     private final ProdutoraService produtoraService;
 
     @GetMapping
-    public List<Produtora> getAll() {
-        return produtoraService.getAll();
+    public ResponseEntity<List<Produtora>> getAll() {
+        List<Produtora> produtoraResponse = produtoraService.getAll();
+        return ResponseEntity.ok(produtoraResponse);
     }
 
     @GetMapping("/{id}")
-    public Produtora getById(@PathVariable Long id) {
-        return produtoraService.getById(id);
+    public ResponseEntity<Produtora> getById(@PathVariable Long id) {
+        Produtora produtoraResponse = produtoraService.getById(id);
+        return ResponseEntity.ok(produtoraResponse);
     }
 
     @PostMapping
-    public Produtora save(@RequestBody Produtora produtora) {
-        return produtoraService.save(produtora);
+    public ResponseEntity<Produtora> save(@RequestBody Produtora produtora) {
+        Produtora produtoraResponse = produtoraService.save(produtora);
+        return ResponseEntity.ok(produtoraResponse);
     }
 
     @PutMapping("/{id}")
-    public Produtora update(@PathVariable Long id, @RequestBody Produtora produtora) {
-        return produtoraService.update(id, produtora);
+    public ResponseEntity<Produtora> update(@PathVariable Long id, @RequestBody Produtora produtora) {
+        Produtora produtoraResponse = produtoraService.update(id, produtora);
+        return ResponseEntity.ok(produtoraResponse);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         produtoraService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }

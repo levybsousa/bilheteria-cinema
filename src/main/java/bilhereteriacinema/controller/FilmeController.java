@@ -19,12 +19,13 @@ public class FilmeController {
     private final FilmeService filmeService;
 
     @GetMapping
-    public List<Filme> getAll() {
-        return filmeService.getAll();
+    public ResponseEntity<List<Filme>> getAll() {
+        List<Filme> filmeResponse = filmeService.getAll();
+        return ResponseEntity.ok(filmeResponse);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Filme> getByID(@PathVariable Long id) {
+    public ResponseEntity<Filme> getById(@PathVariable Long id) {
         Filme filmeResponse = filmeService.getById(id);
         return ResponseEntity.ok(filmeResponse);
     }
@@ -42,8 +43,9 @@ public class FilmeController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         filmeService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
 }
