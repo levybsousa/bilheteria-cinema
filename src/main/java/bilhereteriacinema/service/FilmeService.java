@@ -29,17 +29,17 @@ public class FilmeService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RecursoNaoEncontradoException();
+            throw new RecursoNaoEncontradoException("Filme não encontrado");
         }
 
     }
 
     public Filme save(Filme filme) {
 
-       Optional <Filme> filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
+        Optional<Filme> filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
 
         if (filmeFromDataBase.isPresent()) {
-            throw new RuntimeException("Filme já existe");
+            throw new RecursoNaoEncontradoException("Filme já cadastrado");
         }
         Filme result = filmeRepository.save(filme);
         return result;
@@ -51,7 +51,7 @@ public class FilmeService {
         Optional<Filme> filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
 
         if (filmeFromDataBase.isPresent() && filmeFromDataBase.get().getId() != filme.getId()) {
-            throw new RuntimeException("Filme já cadastrado");
+            throw new RecursoNaoEncontradoException("Filme já cadastrado");
         }
 
         Filme result = filmeRepository.save(filme);
