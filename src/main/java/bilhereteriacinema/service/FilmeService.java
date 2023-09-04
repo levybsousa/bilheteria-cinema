@@ -39,7 +39,7 @@ public class FilmeService {
         Optional<Filme> filmeFromDataBase = filmeRepository.getFilmeByTitulo(filme.getTitulo());
 
         if (filmeFromDataBase.isPresent()) {
-            throw new RecursoNaoEncontradoException("Filme já cadastrado");
+            throw new RecursoNaoEncontradoException();
         }
         Filme result = filmeRepository.save(filme);
         return result;

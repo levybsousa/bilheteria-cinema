@@ -31,7 +31,7 @@ public class GeneroService {
     public Genero save(Genero genero) {
         Optional<Genero> generoFromDataBase = generoRepository.getGeneroByNome(genero.getNome());
         if (generoFromDataBase.isPresent()) {
-            throw new RecursoNaoEncontradoException("Genero já cadastrado");
+            throw new RecursoNaoEncontradoException();
         }
         Genero result = generoRepository.save(genero);
         return result;

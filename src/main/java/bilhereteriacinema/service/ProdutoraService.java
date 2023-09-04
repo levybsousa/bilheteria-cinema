@@ -36,7 +36,7 @@ public class ProdutoraService {
     public Produtora save(Produtora produtora) {
         Optional<Produtora> produtoraFromDataBase = produtoraRepository.getProdutoraByNome(produtora.getNome());
         if (produtoraFromDataBase.isPresent()) {
-            throw new RecursoNaoEncontradoException("Produtora já cadastrada");
+            throw new RecursoNaoEncontradoException();
         }
         Produtora result = produtoraRepository.save(produtora);
         return result;
